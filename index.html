@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Apex Contracting Co. provides residential, commercial, and light industrial electrical services across Western and Central Indiana." />
+  <title>Apex Contracting Co. | Electrical Services in Western & Central Indiana</title>
+
+  <style>
+    :root{
+      --red:#FF1E1E;
+      --redHover:#E11414;
+      --char:#0F1115;
+      --off:#F6F7F9;
+      --steel:#A7AFBC;
+      --card:#151824;
+      --card2:#0f131d;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color:var(--off);
+      background: radial-gradient(1200px 800px at 20% 0%, #1a1f2c 0%, var(--char) 50%, #090b10 100%);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .muted{color:rgba(246,247,249,.78)}
+    .tiny{font-size:.92rem}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px; border:1px solid rgba(167,175,188,.25);
+      background:rgba(15,17,21,.35); border-radius:999px;
+    }
+    .dot{width:10px; height:10px; background:var(--red); border-radius:999px; box-shadow: 0 0 16px rgba(255,30,30,.6)}
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,17,21,.65);
+      border-bottom: 1px solid rgba(167,175,188,.18);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.3px;
+    }
+    .brand .mark{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,30,30,.95), rgba(225,20,20,.85));
+      box-shadow: 0 10px 25px rgba(255,30,30,.25);
+      position:relative;
+    }
+    .brand .mark:before{
+      content:"";
+      position:absolute; inset:10px 16px 10px 16px;
+      background: rgba(246,247,249,.92);
+      clip-path: polygon(40% 0, 60% 0, 48% 45%, 70% 45%, 30% 100%, 44% 55%, 25% 55%);
+      border-radius:2px;
+    }
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; gap:16px; align-items:center;
+    }
+    nav a{
+      padding:10px 10px; border-radius:12px;
+      color:rgba(246,247,249,.86);
+    }
+    nav a:hover{background:rgba(246,247,249,.06)}
+    .ctaRow{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(167,175,188,.22);
+      background:rgba(246,247,249,.06);
+      color:var(--off);
+      font-weight:700;
+      box-shadow:none;
+      transition: transform .08s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(167,175,188,.38)}
+    .btn.primary{
+      background:var(--red);
+      border-color: rgba(255,30,30,.6);
+      color:white;
+      box-shadow: 0 14px 35px rgba(255,30,30,.22);
+    }
+    .btn.primary:hover{background:var(--redHover)}
+    .btn.ghost{
+      background:transparent;
+      border-color: rgba(255,30,30,.55);
+      color:rgba(246,247,249,.92);
+    }
+    .btn.ghost:hover{background: rgba(255,30,30,.10)}
+    .mobileToggle{display:none}
+    /* Sections */
+    section{padding:70px 0}
+    .hero{
+      padding:70px 0 40px 0;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:28px;
+      align-items:stretch;
+    }
+    h1{
+      margin:12px 0 12px 0;
+      font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+      line-height:1.08;
+      letter-spacing:-.6px;
+    }
+    h2{
+      margin:0 0 14px 0;
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      letter-spacing:-.3px;
+    }
+    h3{
+      margin:0 0 10px 0;
+      font-size:1.05rem;
+      letter-spacing:.1px;
+    }
+    .panel{
+      border:1px solid rgba(167,175,188,.18);
+      background: linear-gradient(180deg, rgba(21,24,36,.75), rgba(15,19,29,.65));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroCard{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .heroCard:after{
+      content:"";
+      position:absolute;
+      inset:-80px -120px auto auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,30,30,.45), rgba(255,30,30,0) 70%);
+      filter: blur(2px);
+      transform: rotate(20deg);
+    }
+    .heroActions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .trustRow{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:18px;
+    }
+    .trustItem{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(167,175,188,.18);
+      background: rgba(15,17,21,.35);
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .icon{
+      width:22px; height:22px; border-radius:8px;
+      border:1px solid rgba(255,30,30,.55);
+      background: rgba(255,30,30,.12);
+      position:relative;
+      flex:0 0 auto;
+    }
+    .icon:before{
+      content:"";
+      position:absolute; inset:6px;
+      background: rgba(246,247,249,.85);
+      clip-path: polygon(50% 0, 64% 34%, 100% 40%, 72% 62%, 78% 100%, 50% 78%, 22% 100%, 28% 62%, 0 40%, 36% 34%);
+      opacity:.9;
+    }
+    .heroAside{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .contactBox{
+      border-radius:16px;
+      border:1px solid rgba(167,175,188,.20);
+      background: rgba(15,17,21,.40);
+      padding:14px;
+    }
+    .contactLine{display:flex; justify-content:space-between; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid rgba(167,175,188,.12)}
+    .contactLine:last-child{border-bottom:none}
+    .contactLine a{color:rgba(246,247,249,.95)}
+    .badge{
+      font-size:.82rem;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,30,30,.5);
+      background: rgba(255,30,30,.10);
+      color:rgba(246,247,249,.92);
+      white-space:nowrap;
+    }
+
+    /* Services */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .card{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid rgba(167,175,188,.16);
+      background: rgba(21,24,36,.55);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:auto -40px -40px auto;
+      width:120px; height:120px;
+      background: radial-gradient(circle, rgba(255,30,30,.25), rgba(255,30,30,0) 70%);
+    }
+    .card p{margin:0; color:rgba(246,247,249,.78)}
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      color:rgba(246,247,249,.92);
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .bolt{
+      width:18px; height:18px; border-radius:8px;
+      background: rgba(255,30,30,.16);
+      border:1px solid rgba(255,30,30,.45);
+      position:relative;
+    }
+    .bolt:before{
+      content:"";
+      position:absolute; inset:3px 6px 3px 6px;
+      background: rgba(246,247,249,.90);
+      clip-path: polygon(50% 0, 70% 0, 56% 45%, 75% 45%, 30% 100%, 44% 55%, 25% 55%);
+    }
+
+    /* Steps */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .stepNum{
+      width:34px; height:34px;
+      border-radius:12px;
+      background: rgba(255,30,30,.18);
+      border:1px solid rgba(255,30,30,.55);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .thumb{
+      height:160px;
+      border-radius:16px;
+      border:1px solid rgba(167,175,188,.16);
+      background:
+        linear-gradient(135deg, rgba(255,30,30,.14), rgba(255,30,30,0) 45%),
+        linear-gradient(180deg, rgba(246,247,249,.08), rgba(246,247,249,0)),
+        rgba(15,17,21,.55);
+      display:flex;
+      align-items:flex-end;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .thumb small{color:rgba(246,247,249,.78)}
+    .tag{
+      position:absolute;
+      top:12px; left:12px;
+      font-size:.78rem;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(167,175,188,.22);
+      background: rgba(15,17,21,.45);
+      color:rgba(246,247,249,.85);
+    }
+
+    /* CTA band */
+    .ctaBand{
+      padding:26px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,30,30,.40);
+      background:
+        radial-gradient(600px 180px at 20% 30%, rgba(255,30,30,.35), rgba(255,30,30,0) 60%),
+        rgba(15,17,21,.55);
+      box-shadow: 0 18px 40px rgba(255,30,30,.12);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    /* Contact */
+    form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    label{display:block; font-weight:700; font-size:.9rem; margin-bottom:6px; color:rgba(246,247,249,.90)}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(167,175,188,.22);
+      background: rgba(15,17,21,.35);
+      color: var(--off);
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(255,30,30,.65);
+      box-shadow: 0 0 0 3px rgba(255,30,30,.18);
+    }
+    textarea{min-height:120px; grid-column:1 / -1; resize:vertical}
+    .full{grid-column:1 / -1}
+    .formNote{margin-top:10px; color:rgba(246,247,249,.70); font-size:.92rem}
+    footer{
+      padding:30px 0 50px 0;
+      border-top:1px solid rgba(167,175,188,.16);
+      background: rgba(15,17,21,.45);
+    }
+    .footerGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns: 1fr; }
+      .grid, .steps, .gallery{grid-template-columns: 1fr 1fr;}
+      form{grid-template-columns: 1fr;}
+    }
+    @media (max-width: 720px){
+      nav ul{display:none}
+      .mobileToggle{display:inline-flex}
+      .grid, .steps, .gallery{grid-template-columns: 1fr;}
+      .trustRow{grid-template-columns: 1fr;}
+      .footerGrid{grid-template-columns: 1fr;}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Apex Contracting Co.">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Apex Contracting Co.</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="ctaRow">
+        <a class="btn mobileToggle ghost" href="#contact">Menu</a>
+        <a class="btn ghost" href="tel:18128706486">Call/Text</a>
+        <a class="btn primary" href="#contact">Get a Free Estimate</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="panel heroCard">
+          <div>
+            <span class="pill"><span class="dot" aria-hidden="true"></span><span class="tiny">Western & Central Indiana Electrical Services</span></span>
+            <h1>Electrical Work Done Right.<br>Fast, Clean, Reliable.</h1>
+            <p class="muted">
+              Apex Contracting Co. provides residential, commercial, and light industrial electrical service across Western and Central Indiana.
+              From panel upgrades to smart home installs and PLC troubleshooting, we bring clear communication and clean workmanship.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#contact">Request a Free Estimate</a>
+              <a class="btn" href="tel:18128706486">Call/Text 812-870-6486</a>
+              <a class="btn" href="mailto:chase@apex-constructionco.com">Email Us</a>
+            </div>
+
+            <div class="trustRow" aria-label="Trust indicators">
+              <div class="trustItem"><span class="icon" aria-hidden="true"></span><div><strong>Clear Upfront Quotes</strong><div class="muted tiny">No mystery math. Options explained.</div></div></div>
+              <div class="trustItem"><span class="icon" aria-hidden="true"></span><div><strong>Professional Troubleshooting</strong><div class="muted tiny">Find the cause, fix the root.</div></div></div>
+              <div class="trustItem"><span class="icon" aria-hidden="true"></span><div><strong>Clean, Safe Worksites</strong><div class="muted tiny">Respect for your home or facility.</div></div></div>
+              <div class="trustItem"><span class="icon" aria-hidden="true"></span><div><strong>Fast Scheduling</strong><div class="muted tiny">Quick response, steady updates.</div></div></div>
+            </div>
+          </div>
+
+          <div class="muted tiny">
+            <strong>Tip:</strong> Add real project photos later for a big credibility boost.
+          </div>
+        </div>
+
+        <aside class="panel heroAside">
+          <h2>Contact</h2>
+          <div class="contactBox">
+            <div class="contactLine">
+              <span class="muted">Call/Text</span>
+              <a href="tel:18128706486"><strong>812-870-6486</strong></a>
+            </div>
+            <div class="contactLine">
+              <span class="muted">Email</span>
+              <a href="mailto:chase@apex-constructionco.com"><strong>chase@apex-constructionco.com</strong></a>
+            </div>
+            <div class="contactLine">
+              <span class="muted">Service Area</span>
+              <span class="badge">Western & Central IN</span>
+            </div>
+          </div>
+
+          <div class="card" style="background: rgba(15,17,21,.35);">
+            <div class="kicker"><span class="bolt" aria-hidden="true"></span>Quick Service Snapshot</div>
+            <p class="tiny muted">
+              Lighting • Circuit Additions • Panel Replacement • Troubleshooting • Smart Home • Generators • AC/DC Power • HVAC Electrical • PLC Troubleshooting
+            </p>
+          </div>
+
+          <a class="btn primary" href="#contact">Request an Estimate</a>
+          <a class="btn ghost" href="#services">View Services</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <h2>Electrical Services</h2>
+      <p class="muted">If it’s electrical, we can probably handle it. Here are the most requested services.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Lighting & Fixtures</div>
+          <p>Indoor/outdoor installs, upgrades, retrofits, and troubleshooting.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Circuit Additions</div>
+          <p>Dedicated circuits for kitchens, garages, shops, and equipment.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Panel Replacement & Upgrades</div>
+          <p>Modernize your electrical service, improve capacity, and clean up unsafe panels.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Electrical Troubleshooting</div>
+          <p>Tripping breakers, flickering lights, dead outlets, intermittent faults.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Smart Home Technology</div>
+          <p>Smart switches, dimmers, sensors, hubs, and automation support.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Generators & Transfer Switches</div>
+          <p>Safe power transfer solutions, wiring, hookups, and planning.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>AC/DC Power</div>
+          <p>Power supplies, converters, control circuits, specialty power needs.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>HVAC Electrical Support</div>
+          <p>Disconnects, service wiring support, and diagnostics assistance.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>PLC Troubleshooting</div>
+          <p>I/O checks, power/signal diagnostics, comms issues, panel-level troubleshooting.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <a class="btn primary" href="#contact">Not sure? Send photos and we’ll recommend options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <h2>Simple Process. No Guesswork.</h2>
+      <p class="muted">Quick intake, clear estimate, clean finish.</p>
+
+      <div class="steps">
+        <div class="card">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div class="stepNum">1</div>
+            <div>
+              <h3>Tell us what’s going on</h3>
+              <p class="muted">Call, text, or use the form. Photos help a lot.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div class="stepNum">2</div>
+            <div>
+              <h3>Get a clear estimate</h3>
+              <p class="muted">We explain options and pricing upfront.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <div class="stepNum">3</div>
+            <div>
+              <h3>We fix it, test it, and leave it clean</h3>
+              <p class="muted">Professional work. Verified results. Clean jobsite.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section>
+    <div class="wrap">
+      <div class="ctaBand">
+        <div>
+          <h2 style="margin:0 0 8px 0;">Serving Western & Central Indiana</h2>
+          <div class="muted">If you’re nearby but not sure you’re in range, reach out and we’ll confirm availability.</div>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn primary" href="tel:18128706486">Call/Text Now</a>
+          <a class="btn ghost" href="#contact">Request an Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Recent Work</h2>
+      <p class="muted">Replace these placeholders with photos later (before/after is gold).</p>
+
+      <div class="gallery">
+        <div class="thumb"><span class="tag">Panels</span><div><strong>Panel Upgrade</strong><br><small>Service modernization</small></div></div>
+        <div class="thumb"><span class="tag">Lighting</span><div><strong>Lighting Install</strong><br><small>Indoor/outdoor</small></div></div>
+        <div class="thumb"><span class="tag">Generators</span><div><strong>Transfer Switch</strong><br><small>Safe backup power</small></div></div>
+        <div class="thumb"><span class="tag">Smart Home</span><div><strong>Smart Switches</strong><br><small>Controls & automation</small></div></div>
+        <div class="thumb"><span class="tag">Troubleshooting</span><div><strong>Fault Diagnosis</strong><br><small>Root-cause fix</small></div></div>
+        <div class="thumb"><span class="tag">Industrial/PLC</span><div><strong>PLC Support</strong><br><small>I/O & comms checks</small></div></div>
+      </div>
+
+      <p class="muted tiny" style="margin-top:12px">
+        Note: Some industrial projects can’t be photographed. We can share details on request.
+      </p>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="wrap">
+      <h2>Who We Help</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Residential</div>
+          <p>Panels, circuits, lighting, smart home installs, generator hookups, and troubleshooting.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Commercial</div>
+          <p>Service calls, lighting upgrades, tenant improvements, and reliable maintenance support.</p>
+        </div>
+        <div class="card">
+          <div class="kicker"><span class="bolt" aria-hidden="true"></span>Light Industrial / Controls</div>
+          <p>PLC troubleshooting, I/O diagnostics, control power issues, and panel-level troubleshooting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <h2>About Apex Contracting Co.</h2>
+      <div class="panel" style="padding:18px;">
+        <p class="muted" style="margin:0">
+          Apex Contracting Co. is built around doing electrical work the way it should be done: clear communication, safe installs,
+          and clean results. We show up on time, explain the options, and treat your property like it’s ours.
+          Whether it’s a simple repair or a complex troubleshooting job, our goal is the same: solve the problem and leave you confident in the fix.
+        </p>
+        <div class="grid" style="margin-top:14px;">
+          <div class="card" style="background: rgba(15,17,21,.35);">
+            <h3>Safety-first</h3>
+            <p class="muted">Work that’s done correctly, tested, and built to last.</p>
+          </div>
+          <div class="card" style="background: rgba(15,17,21,.35);">
+            <h3>Clean workmanship</h3>
+            <p class="muted">Neat installs, labeled where it matters, jobsite respected.</p>
+          </div>
+          <div class="card" style="background: rgba(15,17,21,.35);">
+            <h3>Real troubleshooting</h3>
+            <p class="muted">We aim for root-cause fixes, not band-aids.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <h2>What Customers Say</h2>
+      <p class="muted">Swap these placeholders with real reviews as you collect them.</p>
+
+      <div class="grid">
+        <div class="card">
+          <p>“Quick response, great communication, and the work was clean.”</p>
+          <p class="tiny muted" style="margin-top:10px"><strong>Customer</strong> • Indiana</p>
+        </div>
+        <div class="card">
+          <p>“Solved a problem that had been bugging us for months.”</p>
+          <p class="tiny muted" style="margin-top:10px"><strong>Customer</strong> • Indiana</p>
+        </div>
+        <div class="card">
+          <p>“Professional from start to finish. Highly recommend.”</p>
+          <p class="tiny muted" style="margin-top:10px"><strong>Customer</strong> • Indiana</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Request an Estimate</h2>
+      <p class="muted">Tell us what you need. If you can, include photos and your location so we can respond quickly.</p>
+
+      <div class="grid" style="grid-template-columns: 1.2fr .8fr;">
+        <div class="panel" style="padding:18px;">
+          <!-- This form uses "mailto:" so it works anywhere with no backend.
+               For a real submission (recommended), use Netlify Forms / Formspree / your hosting's form handler. -->
+          <form id="estimateForm">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" autocomplete="tel" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="zip">City / Zip</label>
+              <input id="zip" name="zip" autocomplete="postal-code" />
+            </div>
+            <div class="full">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option>Electrical Troubleshooting</option>
+                <option>Panel Replacement / Upgrade</option>
+                <option>Circuit Addition</option>
+                <option>Lighting</option>
+                <option>Smart Home Technology</option>
+                <option>Generator / Transfer Switch</option>
+                <option>HVAC Electrical Support</option>
+                <option>AC/DC Power</option>
+                <option>PLC Troubleshooting</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="details">Describe the job</label>
+              <textarea id="details" name="details" placeholder="What’s happening? Any symptoms? Any deadlines?"></textarea>
+            </div>
+            <div class="full">
+              <label for="contactMethod">Preferred contact method</label>
+              <select id="contactMethod" name="contactMethod">
+                <option>No preference</option>
+                <option>Text</option>
+                <option>Call</option>
+                <option>Email</option>
+              </select>
+            </div>
+
+            <div class="full" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <button class="btn primary" type="submit">Send Request</button>
+              <a class="btn" href="tel:18128706486">Call/Text Instead</a>
+            </div>
+          </form>
+
+          <div class="formNote">
+            This form opens your email app to send details (no website backend needed).
+            For a “real” web form that submits automatically, use Netlify/Vercel + a form handler.
+          </div>
+        </div>
+
+        <div class="panel" style="padding:18px;">
+          <h3 style="margin-top:0">Contact</h3>
+          <div class="contactBox">
+            <div class="contactLine">
+              <span class="muted">Call/Text</span>
+              <a href="tel:18128706486"><strong>812-870-6486</strong></a>
+            </div>
+            <div class="contactLine">
+              <span class="muted">Email</span>
+              <a href="mailto:chase@apex-constructionco.com"><strong>chase@apex-constructionco.com</strong></a>
+            </div>
+            <div class="contactLine">
+              <span class="muted">Service Area</span>
+              <span class="badge">Western & Central IN</span>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px; background: rgba(15,17,21,.35);">
+            <div class="kicker"><span class="bolt" aria-hidden="true"></span>Fastest way to reach us</div>
+            <p class="muted tiny">Text a photo + your city/zip to <strong>812-870-6486</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footerGrid">
+      <div>
+        <div class="brand" style="margin-bottom:10px;">
+          <span class="mark" aria-hidden="true"></span>
+          <span>Apex Contracting Co.</span>
+        </div>
+        <div class="muted tiny">Electrical services across Western & Central Indiana.</div>
+        <div class="muted tiny" style="margin-top:8px;">
+          Call/Text: <a href="tel:18128706486"><strong>812-870-6486</strong></a> ·
+          Email: <a href="mailto:chase@apex-constructionco.com"><strong>chase@apex-constructionco.com</strong></a>
+        </div>
+      </div>
+      <div>
+        <div class="muted tiny"><strong>Quick Links</strong></div>
+        <div style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="#services">Services</a>
+          <a class="btn" href="#projects">Projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+        <div class="muted tiny" style="margin-top:12px;">© <span id="year"></span> Apex Contracting Co. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Set year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mailto form submit (no backend needed)
+  const form = document.getElementById('estimateForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const subject = encodeURIComponent("Estimate Request - Apex Contracting Co.");
+    const body = encodeURIComponent(
+      `Name: ${data.get('name')}\n` +
+      `Phone: ${data.get('phone')}\n` +
+      `Email: ${data.get('email')}\n` +
+      `City/Zip: ${data.get('zip') || ''}\n` +
+      `Service Needed: ${data.get('service')}\n` +
+      `Preferred Contact: ${data.get('contactMethod')}\n\n` +
+      `Details:\n${data.get('details') || ''}\n`
+    );
+    window.location.href = `mailto:chase@apex-constructionco.com?subject=${subject}&body=${body}`;
+  });
+</script>
+</body>
+</html>
